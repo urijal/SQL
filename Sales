@@ -1,3 +1,6 @@
+**/This is not my original data. I obtained the table content from Khan Academy and worked with it./**
+
+
 CREATE TABLE sales(
   ID INTEGER  NOT NULL PRIMARY KEY
 , transaction_date TEXT
@@ -35,9 +38,23 @@ INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,co
 INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/6/09 7:45','Couch',3600,'Visa','Sabine','London','England','United Kingdom','1/6/09 7:00','1/6/09 9:17',51.52721,0.14559);
 INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/2/09 7:35','Chair',1200,'Diners','Hani','Salt Lake city','UT','United states','12/30/08 5:44','1/6/09 10:52',40.76083,-111.89028);
 INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/6/09 12:56','Chair',1200,'Visa','Jeremy','Manchester','England','United Kingdom','1/6/09 10:58','1/6/09 13:31',53.5,-2.2166667); 
-SELECT * FROM sales;
-SELECT product, SUM (price) as Total from sales GROUP BY product ORDER BY total ASC;
-SELECT product, avg(price) as "Average" from sales Group by product Having Average>1500;
-SELECT id, product, price, CASE WHEN price >1500 THEN "expensive" WHEN price <1500 THEN "inexpensive" END as "price_categories" from sales;
-SELECT product, name, transaction_date, payment_type FROM sales WHERE payment_type = "Visa";
-SELECT name, country, product FROM sales WHERE country = "United Kingdom" OR Country="Australia" ORDER BY country;
+
+SELECT * 
+FROM sales;
+
+SELECT product, SUM (price) as Total from sales 
+GROUP BY product 
+ORDER BY total ASC;
+
+SELECT product, avg(price) as "Average" from sales 
+Group by product 
+Having Average>1500;
+
+SELECT id, product, price, 
+CASE WHEN price >1500 THEN "expensive" WHEN price <1500 THEN "inexpensive" END as "price_categories" from sales;
+
+SELECT product, name, transaction_date, payment_type FROM sales
+WHERE payment_type = "Visa";
+
+SELECT name, country, product FROM sales 
+WHERE country = "United Kingdom" OR Country="Australia" ORDER BY country;
