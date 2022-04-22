@@ -1,0 +1,51 @@
+/* Let's create table about the people and what they do here */
+
+CREATE TABLE Famous_people (
+  id INTEGER PRIMARY KEY,
+  name TEXT, 
+  work TEXT);
+  
+ INSERT INTO Famous_people VALUES (1,"Angelina Jolly", "Actress");
+ INSERT INTO Famous_people VALUES (2,"Taylor Swift", "Singer/Songwriter");
+ INSERT INTO Famous_people VALUES (3, "Priyanka Chopra", "Actress");
+ INSERT INTO Famous_people VALUES (4, "Hassan Minhaj", "Comedian");
+ INSERT INTO Famous_people VALUES (5, "Jimmy Fallon", "Comedian");
+ INSERT INTO Famous_people VALUES (6, "ED Sheeran", "Singer/Songwriter"); 
+ INSERT INTO Famous_people VALUES (7, "Usha Rijal", NULL);
+ 
+ CREATE TABLE Work (
+  id INTEGER PRIMARY KEY,
+  people_id INTEGER,
+  work text);
+ 
+ INSERT INTO Work VALUES (1, 2, "Shake It Off");
+ INSERT INTO Work VALUES (2, 6, "Shape of You");
+ INSERT INTO Work VALUES (3, 5, "Comedy night with Jimmy Falon");
+ INSERT INTO Work VALUES (4, 1, "Maleficent");
+ INSERT INTO Work VALUES (5, 3, "Quantico");
+ INSERT INTO Work VALUES (6, 4, "Patriotic Act");
+ 
+ /* let's see what out famous people has done*/
+ 
+ SELECT Famous_people.name, Work.work     FROM Famous_people 
+ LEFT OUTER JOIN WORK 
+ ON Famous_people.id= work.people_id;
+ 
+CREATE TABLE work_pair (
+  id INTEGER PRIMARY KEY,
+  people_id1 INTEGER,
+  people_id2 INTEGER);
+  
+ INSERT INTO work_pair VALUES (1, 1, 2);
+ INSERT INTO work_pair VALUES (2, 3, 4);
+ INSERT INTO work_pair VALUES (3, 5, 6);
+ 
+ /* Let's see how is paired together*/
+ 
+ SELECT a.name, b.name FROM work_pair 
+ JOIN Famous_people a
+ ON a.id= work_pair.people_id1
+ JOIN Famous_people b
+ ON b.id = work_pair.people_id2;
+ 
+ 
