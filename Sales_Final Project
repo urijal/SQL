@@ -1,4 +1,4 @@
-Here are some of the queries I made to answer questions regarding sales in music company. 
+Here are some of the queries I made to answer some questions regarding sales in music company from a database named 'Chinook' in SQLite Studio as part of my Break Into Tech Certificate Course final project. 
 
 --1.Show Customers (their full names, customer ID, and country) who are not in the US.
 
@@ -11,7 +11,7 @@ SELECT firstname, lastname
 FROM chinook.customers
 WHERE country="Brazil";
 
---Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
+--3.Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
 
 SELECT Cus.firstname, Cus.lastname, Inv.invoiceID, Inv.BillingCountry, Inv.InvoiceDate
 FROM chinook.invoices Inv
@@ -24,11 +24,11 @@ SELECT firstname, lastname, title
 FROM chinook.employees
 WHERE title = "Sales Support Agent"; 
 
---Find a unique/distinct list of billing countries from the Invoice table.
+--4.Find a unique/distinct list of billing countries from the Invoice table.
 SELECT distinct BillingCountry 
 FROM invoices;
 
---6.Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+--5.Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
 SELECT Inv.invoiceid, Cus.supportRepid, Emp.firstname, Emp.lastname
 FROM invoices Inv
 LEFT JOIN customers Cus
@@ -36,7 +36,7 @@ ON Cus.customerid= Inv.customerid
 LEFT JOIN employees Emp
 ON Cus.supportRepid=Emp.employeeID;
 
---7.Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
+--6.Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
 SELECT Inv.total,Inv.invoiceid, Cus.firstname, Cus.lastname, Cus.country, Emp.firstname, Emp.lastname
 FROM invoices Inv
 LEFT JOIN customers Cus
@@ -44,23 +44,23 @@ ON Cus.customerid=Inv.customerid
 LEFT JOIN employees Emp
 ON Emp.employeeid=Cus.supportrepid;
 
---8.How many Invoices were there in 2009?
+--7.How many Invoices were there in 2009?
 SELECT Count(*)
 FROM invoices
 WHERE InvoiceDate LIKE '2009%';
 
---9.What are the total sales for 2009?
+--8.What are the total sales for 2009?
 SELECT  ROUND (SUM(total),2)
 FROM invoices
 WHERE InvoiceDate LIKE '2009%';
 
---10.Write a query that includes the purchased track name with each invoice line item.
+--9.Write a query that includes the purchased track name with each invoice line item.
 SELECT T.Name,IT.InvoiceLineId
 FROM tracks T
 LEFT JOIN invoice_items IT
 ON IT.trackid=T.trackid;
 
---11.Write a query that includes the purchased track name AND artist name with each invoice line item.
+--10..Write a query that includes the purchased track name AND artist name with each invoice line item.
 SELECT tracks.Name, artists.Name, invoice_items.InvoiceLineId 
 FROM tracks
 LEFT JOIN albums
@@ -70,7 +70,7 @@ ON artists.ArtistId=albums.ArtistId
 LEFT JOIN invoice_items
 ON invoice_items.TrackId=tracks.TrackId;
 
---12.Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+--11.Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
 SELECT tracks.Name as Track_name, albums.Title as album_title, media_types.Name as media_type_name, genres.Name as genre
 FROM tracks
 LEFT JOIN albums
@@ -80,7 +80,7 @@ ON media_types.MediaTypeId=tracks.MediaTypeId
 LEFT JOIN genres
 ON genres.GenreId=tracks.GenreId;
 
---13.Show the total sales made by each sales agent.
+--12.Show the total sales made by each sales agent.
 SELECT ROUND (SUM(total),2),customers.SupportRepId as sales_agentid, employees.FirstName as sales_person
 FROM invoices
 LEFT JOIN customers
@@ -89,7 +89,7 @@ LEFT JOIN employees
 ON employees.EmployeeId= customers.SupportRepId
 GROUP BY sales_agentid,sales_person;
 
---14.Which sales agent made the most in sales in 2009?
+--13.Which sales agent made the most in sales in 2009?
 
 SELECT ROUND (SUM(Total),2) as sales,employees.FirstName as sales_agent
 FROM invoices
