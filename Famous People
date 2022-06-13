@@ -1,4 +1,4 @@
-/* Let's create table about the people and what they do here */
+/* In this project I created multiple tables (Famous_people, Work & work_pair) about some famous people and joined those tables to see what they have done. */
 
 CREATE TABLE Famous_people (
   id INTEGER PRIMARY KEY,
@@ -25,9 +25,10 @@ CREATE TABLE Famous_people (
  INSERT INTO Work VALUES (5, 3, "Quantico");
  INSERT INTO Work VALUES (6, 4, "Patriotic Act");
  
- /* let's see what out famous people has done*/
+ /* let's see what our famous people has done*/
  
- SELECT Famous_people.name, Work.work     FROM Famous_people 
+ SELECT Famous_people.name, Work.work     
+ FROM Famous_people 
  LEFT OUTER JOIN WORK 
  ON Famous_people.id= work.people_id;
  
@@ -40,7 +41,7 @@ CREATE TABLE work_pair (
  INSERT INTO work_pair VALUES (2, 3, 4);
  INSERT INTO work_pair VALUES (3, 5, 6);
  
- /* Let's see how is paired together*/
+ /* Let's see who is paired together*/
  
  SELECT a.name, b.name FROM work_pair 
  JOIN Famous_people a
