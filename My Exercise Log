@@ -1,4 +1,4 @@
-/* What does the app's SQL look like? */
+/* In this project, I have created a table named exercise log and inserted data in the table. I created queries to alter, update and delete few changes in the table. */
 
 CREATE TABLE exercise_log (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
