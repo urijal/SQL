@@ -1,10 +1,12 @@
---I have queried answer to some of the questions below from customer and sales data from BIT_DB database in SQLite Studio.
+--I have queried answer to some of the analytical questions below from customer and sales data from BIT_DB database in SQLite Studio.
 
 --1.How many orders were placed in January?--
-SELECT COUNT (orderID) from BIT_DB.JanSales;
+SELECT COUNT (orderID) 
+From BIT_DB.JanSales;
 
 --2.How many of those orders were for an iPhone?--
-SELECT COUNT (orderID) FROM BIT_DB.JanSales 
+SELECT COUNT (orderID) 
+FROM BIT_DB.JanSales 
 WHERE Product = "iPhone"; 
 
 --3.Select the customer account numbers for all the orders that were placed in February--
