@@ -1,4 +1,4 @@
-/* In this project I created multiple tables (Famous_people, Work & work_pair) about some famous people and joined those tables to see what they have done. */
+/* In this project I created multiple tables (Famous_people, Work & work_pair) about some famous people and joined those tables to see what they have done and who has worked together. */
 
 CREATE TABLE Famous_people (
   id INTEGER PRIMARY KEY,
