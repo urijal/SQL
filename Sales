@@ -1,4 +1,4 @@
-**/This is not my original data. I obtained the table content from Khan Academy and worked with it./**
+**/This is not my original data. I obtained the table content from Khan Academy and worked with it. /**
 
 
 CREATE TABLE sales(
@@ -42,19 +42,27 @@ INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,co
 SELECT * 
 FROM sales;
 
-SELECT product, SUM (price) as Total from sales 
+SELECT product, SUM (price) as Total 
+FROM sales 
 GROUP BY product 
 ORDER BY total ASC;
 
-SELECT product, avg(price) as "Average" from sales 
+SELECT product, avg(price) as "Average" 
+FROM sales 
 Group by product 
 Having Average>1500;
 
 SELECT id, product, price, 
-CASE WHEN price >1500 THEN "expensive" WHEN price <1500 THEN "inexpensive" END as "price_categories" from sales;
+CASE WHEN price >1500 THEN "expensive" 
+WHEN price <1500 THEN "inexpensive" 
+END as "price_categories"
+FROM sales;
 
-SELECT product, name, transaction_date, payment_type FROM sales
+SELECT product, name, transaction_date, payment_type 
+FROM sales
 WHERE payment_type = "Visa";
 
-SELECT name, country, product FROM sales 
-WHERE country = "United Kingdom" OR Country="Australia" ORDER BY country;
+SELECT name, country, product 
+FROM sales 
+WHERE country = "United Kingdom" OR Country="Australia" 
+ORDER BY country;
